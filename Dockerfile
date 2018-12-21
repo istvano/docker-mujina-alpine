@@ -1,17 +1,14 @@
-FROM maven:3.3.9-jdk-8-alpine
+FROM maven:3.6.0-jdk-8-alpine
 
-ENV PYTHON_VERSION=2.7.14-r0
-ENV PY_PIP_VERSION=9.0.0-r1
+ENV PYTHON_VERSION=2.7.15-r1
+ENV PY_PIP_VERSION=10.0.1-r0
 ENV SUPERVISOR_VERSION=3.3.0
-ENV MUJINA_VERSION=mujina-4.1.3
+ENV MUJINA_VERSION=mujina-7.1.0
 
-
-RUN apk add --update \
-      git \
-      python=$PYTHON_VERSION \
-      py2-pip=$PY_PIP_VERSION && \
-    rm -rf /var/cache/apk/* && \
+RUN apk add --no-cache git python=$PYTHON_VERSION py2-pip=$PY_PIP_VERSION && \
     pip install supervisor==$SUPERVISOR_VERSION
+
+
 
 RUN mkdir -p /usr/local/etc && \
     cd /usr/local/etc && \
