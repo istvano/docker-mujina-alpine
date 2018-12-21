@@ -53,36 +53,6 @@ curl -v -H "Accept: application/json" \
         -X PUT -d '{"value": "ALL"}' \
         http://localhost:8080/api/authmethod
 
-curl -v -H "Accept: application/json" \
-        -H "Content-type: application/json" \
-        -X PUT -d '{"value": ["Test User"]}' \
-        http://localhost:8080/api/attributes/urn:mace:dir:attribute-def:cn
-
-curl -v -H "Accept: application/json" \
-        -H "Content-type: application/json" \
-        -X PUT -d '{"value": ["Test"]}' \
-        http://localhost:8080/api/attributes/urn:mace:dir:attribute-def:givenName
-
-curl -v -H "Accept: application/json" \
-        -H "Content-type: application/json" \
-        -X PUT -d '{"value": ["User"]}' \
-        http://localhost:8080/api/attributes/urn:mace:dir:attribute-def:sn
-
-curl -v -H "Accept: application/json" \
-        -H "Content-type: application/json" \
-        -X PUT -d '{"value": ["Test User"]}' \
-        http://localhost:8080/api/attributes/urn:mace:dir:attribute-def:displayName
-
-curl -v -H "Accept: application/json" \
-        -H "Content-type: application/json" \
-        -X PUT -d '{"value": ["test.user"]}' \
-        http://localhost:8080/api/attributes/urn:mace:dir:attribute-def:uid
-
-curl -v -H "Accept: application/json" \
-        -H "Content-type: application/json" \
-        -X PUT -d '{"value": ["test.user@example.com"]}' \
-        http://localhost:8080/api/attributes/urn:mace:dir:attribute-def:mail
-
 STATUS_SP=$(curl -v --silent http://localhost:8080 2>&1 | grep "Identity Provider Home Page" | wc -l)
 until [ "$STATUS_SP" -ge "1" ]; do
   >&2 echo "Waiting for the IDP server to be ready"
